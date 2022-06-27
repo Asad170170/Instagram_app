@@ -29,8 +29,11 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# devise gem
+gem "devise"
+
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -55,6 +58,8 @@ group :development do
   gem 'rubocop-minitest' # or gem 'rubocop-rspec' depending on your test suite
   gem 'rubocop-performance'
   gem 'rubocop-rails'
+  #to send and open email for authentication
+  gem 'letter_opener'
 end
 
 group :test do
