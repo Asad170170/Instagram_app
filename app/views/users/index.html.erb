@@ -1,0 +1,24 @@
+Index
+
+
+<%=@user.email%>
+<%= image_tag @user.image%>
+
+
+<div class="container-fluid">
+    <div class="row">
+
+    <%=@posts.each do |post|%>
+    <div class="col-12">
+    <h1><%=post.caption%><h1>
+    <% (0...post.images.count).each do |image|%>
+    <%= image_tag(post.thumbnail(image)) %>
+    <%end%>
+    </div>
+    <%end%>
+    </div>
+</div>
+
+
+
+<%= link_to "Logout", destroy_user_session_path, method: :delete,class:"nav-link"%>
