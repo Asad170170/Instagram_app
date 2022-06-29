@@ -1,24 +1,46 @@
-Index
+
+<div class="container ">
+    <div class="row ">
+        <div class="col-6">
+            <%@posts.each do |post|%>
+                <div class="post-meta">
+                <%=image_tag post.user.thumbnail ,class:"circular_img"%>
+                <%= link_to   post.user.username,profile_path(post.user.username)%></div>
+                <% (0...post.images.count).each do |image|%>
+                <%= image_tag(post.thumbnail(image))%>
+                <%end%>
+                <%# likes and comments icons %>
+                <div class="post-actions">
+                    <span class="fa fa-heart post-like"></span>
+                    <span class="fa fa-heart post-comment"></span>
+                </div>
+
+                <div>
+                <p><strong><%=post.total_likes%> likes</strong></p>
+                <p><%=post.caption%></p>
+                <p class="text-muted"><%=time_ago_in_words post.created_at%> ago</p>
+
+                </div>
+            <%end%>
+
+        </div>
 
 
-<%=@user.email%>
-<%= image_tag @user.image%>
 
 
-<div class="container-fluid">
-    <div class="row">
-
-    <%=@posts.each do |post|%>
-    <div class="col-12">
-    <h1><%=post.caption%><h1>
-    <% (0...post.images.count).each do |image|%>
-    <%= image_tag(post.thumbnail(image)) %>
-    <%end%>
-    </div>
-    <%end%>
+        <div class="col-6">
+            <div class="user-summary">
+                <p>
+                <%=image_tag @user.thumbnail ,class:"circular_img"%>
+                <strong><%=@user.username %></strong><br />
+                 <%=@user.full_name %>
+                </p>
+            </div>
+            <div class="follow-suggestions">
+             <%=link_to "View All","#",class:"float-right"%>
+              <p class="text-muted " > Suggestions for You <p>
+            </div>
+        </div>
     </div>
 </div>
 
-
-
-<%= link_to "Logout", destroy_user_session_path, method: :delete,class:"nav-link"%>

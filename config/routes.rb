@@ -2,15 +2,15 @@
 
 Rails.application.routes.draw do
 
- # get "/dashboard" => "accounts"
+ # get "/dashboard" => "users#index"
+  get "profile/:username" => "users#profile", as: :profile
+  get "post/like/:post_id" => "likes#save_like",as: :like_post
   devise_for :users , controllers: {
     sessions: 'users/sessions'
   }
-  resources :users
-
+  resources :users ,only: [:index]
   resources :posts,only: [:new, :create ,:show]
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  #root "posts#index"
+  
   root to: "public#homepage"
 
 end

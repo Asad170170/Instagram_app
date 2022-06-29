@@ -1,3 +1,28 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body{
+  background: #fafafa !important;
+}
+.user-summary{
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.follow-suggestions{
+  background-color: #ffff;
+  padding :15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.circular_img{
+  border-radius: 50%;
+}
+.profile-stats{
+  width: 120px;
+  float: left;
+}
+
+

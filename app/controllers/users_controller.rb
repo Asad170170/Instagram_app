@@ -1,31 +1,17 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :user_params, only: [:create]
-
+  before_action :set_profile, only: [:profile]
 
   def index
     @user=current_user
     @posts=Post.active
   end
-  def show
-    #user profile
-    @user=current_user
+
+  def profile
+    @posts=@user.posts.active
   end
 
-  def create
-    @user = User.new(user_params)
-
-    if @user.save
-      redirect_to controller: 'users', action: 'show', current_user: current_user
-    else
-      flash.alert("sign up failed !")
-    end
-
-
-  end
-
-  private
-  def user_params
-    params.require(:user).permit(:email, :body)
+  def set_profile
+    @user=User.find_by_username(params[:username])
   end
 end

@@ -1,0 +1,29 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+    <%= image_tag @user.image,width:"200px",width:"200px",class:"circular_img"%>
+    </div>
+    <div class="col-8 text-left">
+    <h1> <%=@user.full_name%></h1>
+   <%= link_to 'Edit Profile', edit_user_registration_path , class: "btn btn-secondary " %>
+    <div class= "profile-stats"> <%=@user.posts.count%> Posts</div>
+    <div class= "profile-stats"> <%=@user.total_followers%>Followers</div>
+    <div class= "profile-stats"> <%=@user.total_following%>following</div>
+
+    <p> <%=@user.full_name%></p>
+   <%= simple_format @user.description%>
+    <p> <%= link_to @user.website if @user.website.present?%></p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+    <%@posts.each do |post|%>
+    <% (0...post.images.count).each do |image|%>
+    <div class="col-4 insta_post">
+      <%= image_tag(post.thumbnailSMALL(image))%>
+      <%end%>
+    </div>
+    <%end%>
+</div>

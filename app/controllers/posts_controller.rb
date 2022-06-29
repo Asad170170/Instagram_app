@@ -1,4 +1,5 @@
 class PostsController <ApplicationController
+  before_action :authenticate_user!
   def new
     @post=Post.new
   end
@@ -6,6 +7,7 @@ class PostsController <ApplicationController
   end
   def create
     @post=Post.new(post_params)
+    @post.user_id=current_user.id if user_signed_in?
 
     if @post.save
       redirect_to users_path ,flash: { success: "post created"}

@@ -22,3 +22,21 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+
+
+<div class="container ">
+    <div class="row ">
+        <%@posts.each do |post|%>
+        <div class="col-8">
+            <div class="post-meta"><%=post.caption%></div>
+            <% (0...post.images.count).each do |image|%>
+            <%= image_tag(post.thumbnail(image))%>
+            <%end%>
+        </div>
+        <div class="padding"></div>
+        <%end%>
+    </div>
+</div>
+
