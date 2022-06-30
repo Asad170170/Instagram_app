@@ -1,28 +1,28 @@
 
-<div class="container ">
+<div class="container">
     <div class="row ">
         <div class="col-6">
             <%@posts.each do |post|%>
                 <div class="post-meta">
                 <%=image_tag post.user.thumbnail ,class:"circular_img"%>
-                <%= link_to   post.user.username,profile_path(post.user.username)%></div>
+                <%= link_to  post.user.username,profile_path(post.user.username)%></div>
                 <% (0...post.images.count).each do |image|%>
                 <%= image_tag(post.thumbnail(image))%>
                 <%end%>
                 <%# likes and comments icons %>
-                <div class="post-actions">
-                    <span class="fa fa-heart post-like"></span>
-                    <span class="fa fa-heart post-comment"></span>
+
+                <div class="post-details">
+                    <div class="post-actions">
+                        <i class="fa fa-heart like-<%= post.id%> fa-2x post-like" data-id="<%=post.id%>"  ></i>
+                        <i class="fa fa-comment fa-2x  post-comment"></i>
+                    </div>
+                    <p><strong id="post-<%=post.id%>-likes"><%=post.total_likes_count%> likes</strong></p>
+                    <p><strong id="post-<%=post.id%>-comments"><%=post.total_comments_count%> comments</strong></p>
+                    <p><%=post.caption%></p>
+                    <p class="text-muted"><%=time_ago_in_words post.created_at%> ago</p>
                 </div>
 
-                <div>
-                <p><strong><%=post.total_likes%> likes</strong></p>
-                <p><%=post.caption%></p>
-                <p class="text-muted"><%=time_ago_in_words post.created_at%> ago</p>
-
-                </div>
             <%end%>
-
         </div>
 
 
@@ -39,6 +39,7 @@
             <div class="follow-suggestions">
              <%=link_to "View All","#",class:"float-right"%>
               <p class="text-muted " > Suggestions for You <p>
+              <%=render "users/follower_suggestions"%>
             </div>
         </div>
     </div>

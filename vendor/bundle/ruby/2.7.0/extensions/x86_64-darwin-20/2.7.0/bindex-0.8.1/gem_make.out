@@ -1,11 +1,11 @@
-current directory: /Users/dev/Desktop/Instagram_clone/insta-app/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
-/Users/dev/.rvm/rubies/ruby-2.7.2/bin/ruby -I /Users/dev/.rvm/rubies/ruby-2.7.2/lib/ruby/2.7.0 -r ./siteconf20220627-21877-1q7z17t.rb extconf.rb
+current directory: /Users/dev/Desktop/Instagram_clone/Instagram_app/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/dev/.rvm/rubies/ruby-2.7.2/bin/ruby -I /Users/dev/.rvm/rubies/ruby-2.7.2/lib/ruby/2.7.0 -r ./siteconf20220630-43789-dpsxda.rb extconf.rb
 creating Makefile
 
-current directory: /Users/dev/Desktop/Instagram_clone/insta-app/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+current directory: /Users/dev/Desktop/Instagram_clone/Instagram_app/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
 make "DESTDIR=" clean
 
-current directory: /Users/dev/Desktop/Instagram_clone/insta-app/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+current directory: /Users/dev/Desktop/Instagram_clone/Instagram_app/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
 make "DESTDIR="
 compiling cruby.c
 cruby.c:74:17: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
@@ -41,6 +41,6 @@ cruby.c:74:17: note: ')' token is here
 2 warnings generated.
 linking shared-object skiptrace/internal/cruby.bundle
 
-current directory: /Users/dev/Desktop/Instagram_clone/insta-app/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+current directory: /Users/dev/Desktop/Instagram_clone/Instagram_app/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
 make "DESTDIR=" install
-/usr/local/opt/coreutils/bin/ginstall -c -m 0755 cruby.bundle ./.gem.20220627-21877-1n8gf46/skiptrace/internal
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 cruby.bundle ./.gem.20220630-43789-1qf4mct/skiptrace/internal

@@ -1,14 +1,14 @@
-current directory: /Users/dev/Desktop/Instagram_clone/insta-app/vendor/bundle/ruby/2.7.0/gems/msgpack-1.5.2/ext/msgpack
-/Users/dev/.rvm/rubies/ruby-2.7.2/bin/ruby -I /Users/dev/.rvm/rubies/ruby-2.7.2/lib/ruby/2.7.0 -r ./siteconf20220627-21877-1gi1fh1.rb extconf.rb
+current directory: /Users/dev/Desktop/Instagram_clone/Instagram_app/vendor/bundle/ruby/2.7.0/gems/msgpack-1.5.2/ext/msgpack
+/Users/dev/.rvm/rubies/ruby-2.7.2/bin/ruby -I /Users/dev/.rvm/rubies/ruby-2.7.2/lib/ruby/2.7.0 -r ./siteconf20220630-43789-1c37fca.rb extconf.rb
 checking for ruby/st.h... yes
 checking for st.h... yes
 checking for rb_enc_interned_str() in ruby.h... no
 creating Makefile
 
-current directory: /Users/dev/Desktop/Instagram_clone/insta-app/vendor/bundle/ruby/2.7.0/gems/msgpack-1.5.2/ext/msgpack
+current directory: /Users/dev/Desktop/Instagram_clone/Instagram_app/vendor/bundle/ruby/2.7.0/gems/msgpack-1.5.2/ext/msgpack
 make "DESTDIR=" clean
 
-current directory: /Users/dev/Desktop/Instagram_clone/insta-app/vendor/bundle/ruby/2.7.0/gems/msgpack-1.5.2/ext/msgpack
+current directory: /Users/dev/Desktop/Instagram_clone/Instagram_app/vendor/bundle/ruby/2.7.0/gems/msgpack-1.5.2/ext/msgpack
 make "DESTDIR="
 compiling buffer.c
 buffer.c:38:16: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
@@ -1503,6 +1503,6 @@ unpacker_ext_registry.c:27:13: note: ')' token is here
 4 warnings generated.
 linking shared-object msgpack/msgpack.bundle
 
-current directory: /Users/dev/Desktop/Instagram_clone/insta-app/vendor/bundle/ruby/2.7.0/gems/msgpack-1.5.2/ext/msgpack
+current directory: /Users/dev/Desktop/Instagram_clone/Instagram_app/vendor/bundle/ruby/2.7.0/gems/msgpack-1.5.2/ext/msgpack
 make "DESTDIR=" install
-/usr/local/opt/coreutils/bin/ginstall -c -m 0755 msgpack.bundle ./.gem.20220627-21877-1s3l3x/msgpack
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 msgpack.bundle ./.gem.20220630-43789-te8jpa/msgpack

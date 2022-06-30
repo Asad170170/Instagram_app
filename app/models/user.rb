@@ -5,6 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :posts
+  has_many :likes
   has_one_attached :image
   validate :image_type
 
@@ -16,10 +17,10 @@ class User < ApplicationRecord
     "#{firstname} #{lastname}"
   end
   def total_followers
-    0
+    Follower.where(follower_id: self.id).count
   end
   def total_following
-    0
+    Follower.where(following_id: self.id).count
   end
   private
   def image_type

@@ -1,5 +1,5 @@
-current directory: /Users/dev/Desktop/Instagram_clone/insta-app/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.8/ext/nio4r
-/Users/dev/.rvm/rubies/ruby-2.7.2/bin/ruby -I /Users/dev/.rvm/rubies/ruby-2.7.2/lib/ruby/2.7.0 -r ./siteconf20220627-21877-72i1a1.rb extconf.rb
+current directory: /Users/dev/Desktop/Instagram_clone/Instagram_app/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.8/ext/nio4r
+/Users/dev/.rvm/rubies/ruby-2.7.2/bin/ruby -I /Users/dev/.rvm/rubies/ruby-2.7.2/lib/ruby/2.7.0 -r ./siteconf20220630-43789-12uxbkx.rb extconf.rb
 checking for unistd.h... yes
 checking for linux/aio_abi.h... no
 checking for linux/io_uring.h... no
@@ -12,10 +12,10 @@ checking for port_event_t in port.h... no
 checking for sys/resource.h... yes
 creating Makefile
 
-current directory: /Users/dev/Desktop/Instagram_clone/insta-app/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.8/ext/nio4r
+current directory: /Users/dev/Desktop/Instagram_clone/Instagram_app/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.8/ext/nio4r
 make "DESTDIR=" clean
 
-current directory: /Users/dev/Desktop/Instagram_clone/insta-app/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.8/ext/nio4r
+current directory: /Users/dev/Desktop/Instagram_clone/Instagram_app/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.8/ext/nio4r
 make "DESTDIR="
 compiling bytebuffer.c
 compiling monitor.c
@@ -3548,6 +3548,6 @@ selector.c:543:36: note: ')' token is here
 97 warnings generated.
 linking shared-object nio4r_ext.bundle
 
-current directory: /Users/dev/Desktop/Instagram_clone/insta-app/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.8/ext/nio4r
+current directory: /Users/dev/Desktop/Instagram_clone/Instagram_app/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.8/ext/nio4r
 make "DESTDIR=" install
-/usr/local/opt/coreutils/bin/ginstall -c -m 0755 nio4r_ext.bundle ./.gem.20220627-21877-102g25j
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 nio4r_ext.bundle ./.gem.20220630-43789-1biher4

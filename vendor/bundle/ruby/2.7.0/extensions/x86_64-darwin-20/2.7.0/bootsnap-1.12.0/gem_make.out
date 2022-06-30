@@ -1,11 +1,11 @@
-current directory: /Users/dev/Desktop/Instagram_clone/insta-app/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.12.0/ext/bootsnap
-/Users/dev/.rvm/rubies/ruby-2.7.2/bin/ruby -I /Users/dev/.rvm/rubies/ruby-2.7.2/lib/ruby/2.7.0 -r ./siteconf20220627-21877-h2k424.rb extconf.rb
+current directory: /Users/dev/Desktop/Instagram_clone/Instagram_app/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.12.0/ext/bootsnap
+/Users/dev/.rvm/rubies/ruby-2.7.2/bin/ruby -I /Users/dev/.rvm/rubies/ruby-2.7.2/lib/ruby/2.7.0 -r ./siteconf20220630-43789-vvnwcs.rb extconf.rb
 creating Makefile
 
-current directory: /Users/dev/Desktop/Instagram_clone/insta-app/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.12.0/ext/bootsnap
+current directory: /Users/dev/Desktop/Instagram_clone/Instagram_app/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.12.0/ext/bootsnap
 make "DESTDIR=" clean
 
-current directory: /Users/dev/Desktop/Instagram_clone/insta-app/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.12.0/ext/bootsnap
+current directory: /Users/dev/Desktop/Instagram_clone/Instagram_app/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.12.0/ext/bootsnap
 make "DESTDIR="
 compiling bootsnap.c
 bootsnap.c:154:84: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
@@ -365,6 +365,6 @@ bootsnap.c:942:36: note: ')' token is here
 18 warnings generated.
 linking shared-object bootsnap/bootsnap.bundle
 
-current directory: /Users/dev/Desktop/Instagram_clone/insta-app/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.12.0/ext/bootsnap
+current directory: /Users/dev/Desktop/Instagram_clone/Instagram_app/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.12.0/ext/bootsnap
 make "DESTDIR=" install
-/usr/local/opt/coreutils/bin/ginstall -c -m 0755 bootsnap.bundle ./.gem.20220627-21877-o8dju1/bootsnap
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 bootsnap.bundle ./.gem.20220630-43789-hurrcr/bootsnap

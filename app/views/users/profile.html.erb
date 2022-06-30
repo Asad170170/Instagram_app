@@ -6,7 +6,7 @@
     </div>
     <div class="col-8 text-left">
     <h1> <%=@user.full_name%></h1>
-   <%= link_to 'Edit Profile', edit_user_registration_path , class: "btn btn-secondary " %>
+   <%= link_to 'Edit Profile', edit_user_registration_path , class: "btn btn-secondary "  if can_edit_profile(@user.id) %>
     <div class= "profile-stats"> <%=@user.posts.count%> Posts</div>
     <div class= "profile-stats"> <%=@user.total_followers%>Followers</div>
     <div class= "profile-stats"> <%=@user.total_following%>following</div>

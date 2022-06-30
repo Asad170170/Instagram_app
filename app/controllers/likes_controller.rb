@@ -1,25 +1,22 @@
-class PostsController <ApplicationController
+class LikesController <ApplicationController
   before_action :authenticate_user!
 
   def save_like
     @like=Like.new(post_id:params[:post_id],user_id: current_user.id )
-    @post.user_id=current_user.id if user_signed_in?
-
-
+    @post_id=params[:post_id]
         respond_to do |format|
-
-          format.json{
-            if @like.save
-              {success:true}
-            else
-              {success:false}
-            end
+          format.js{
+              if @like.save
+                {success:true}
+              else
+                {success:false}
+              end
+            @post_likes=Post.find(@post_id).total_likes_count
+            puts @post_likes
           }
         end
   end
 
-  def post_params
-    params.require(:post).permit(:caption ,images:[])
-  end
+
 
 end

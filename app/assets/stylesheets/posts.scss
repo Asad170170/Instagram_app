@@ -23,10 +23,28 @@
   padding: 10px;
 }
 .post-details{
-background-color:rgb(202, 192, 192);
+padding: 10px;
+background-color:white;
 padding-bottom: 10px;
+border: 1px solid rgb(199, 199, 199);
+
+}
+.post-actions{
+  margin-bottom: 20px;
+  i{
+    margin-right: 20px;
+    color: #ddd;
+    cursor: pointer;
+   }
+  i.active{
+    color:rgb(160, 29, 29)
+  }
+  i:hover{
+    color:#999
+  }
 }
 .pading{
-  padding: 10px;
+  padding-bottom: 10px;
 }
+
 

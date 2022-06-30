@@ -1,5 +1,5 @@
-current directory: /Users/dev/Desktop/Instagram_clone/insta-app/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c
-/Users/dev/.rvm/rubies/ruby-2.7.2/bin/ruby -I /Users/dev/.rvm/rubies/ruby-2.7.2/lib/ruby/2.7.0 -r ./siteconf20220627-21877-q7r3c.rb extconf.rb
+current directory: /Users/dev/Desktop/Instagram_clone/Instagram_app/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c
+/Users/dev/.rvm/rubies/ruby-2.7.2/bin/ruby -I /Users/dev/.rvm/rubies/ruby-2.7.2/lib/ruby/2.7.0 -r ./siteconf20220630-43789-1nd5q32.rb extconf.rb
 checking for ffi_prep_closure_loc() in -lffi... yes
 checking for ffi_prep_cif_var()... yes
 checking for ffi_raw_call()... yes
@@ -8,10 +8,10 @@ checking for whether -pthread is accepted as LDFLAGS... yes
 creating extconf.h
 creating Makefile
 
-current directory: /Users/dev/Desktop/Instagram_clone/insta-app/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c
+current directory: /Users/dev/Desktop/Instagram_clone/Instagram_app/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c
 make "DESTDIR=" clean
 
-current directory: /Users/dev/Desktop/Instagram_clone/insta-app/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c
+current directory: /Users/dev/Desktop/Instagram_clone/Instagram_app/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c
 make "DESTDIR="
 compiling AbstractMemory.c
 AbstractMemory.c:1100:17: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
@@ -4085,6 +4085,6 @@ Variadic.c:218:58: note: ')' token is here
 compiling ffi.c
 linking shared-object ffi_c.bundle
 
-current directory: /Users/dev/Desktop/Instagram_clone/insta-app/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c
+current directory: /Users/dev/Desktop/Instagram_clone/Instagram_app/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c
 make "DESTDIR=" install
-/usr/local/opt/coreutils/bin/ginstall -c -m 0755 ffi_c.bundle ./.gem.20220627-21877-1bdu4hh
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 ffi_c.bundle ./.gem.20220630-43789-2it8nb
