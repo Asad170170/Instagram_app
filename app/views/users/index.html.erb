@@ -14,32 +14,50 @@
                 <div class="post-details">
                     <div class="post-actions">
                         <i class="fa fa-heart like-<%= post.id%> fa-2x post-like" data-id="<%=post.id%>"  ></i>
-                        <i class="fa fa-comment fa-2x  post-comment"></i>
+                        <%=link_to post_path(post.id) do%>
+                            <i class="fa fa-comment fa-2x  post-comment"></i>
+                        <%end%>
                     </div>
                     <p><strong id="post-<%=post.id%>-likes"><%=post.total_likes_count%> likes</strong></p>
                     <p><strong id="post-<%=post.id%>-comments"><%=post.total_comments_count%> comments</strong></p>
                     <p><%=post.caption%></p>
                     <p class="text-muted"><%=time_ago_in_words post.created_at%> ago</p>
+                    <div class="comments_feed">
+                     <%=render "posts/comments",post: post%>
+                    </div>
+
+                </div>
+
+                <%# adding comments  %>
+                <div class="comment-box">
+                    <%= form_for @comment do |f| %>
+                        <%= f.hidden_field :post_id ,value: post.id%>
+                        <%= f.hidden_field :user_id ,value: @user.id%>
+                    <div class="input-group mb-3">
+                        <%=f.text_field :comment, placeholder:"Add comment here...." ,class:"form-control"%>
+                        <div class="input-group-append">
+                            <%= f.submit "post", class:"btn btn-success float-right"%>
+                        </div>
+                    </div>
+                    <% end %>
+
                 </div>
 
             <%end%>
         </div>
 
-
-
-
         <div class="col-6">
             <div class="user-summary">
                 <p>
-                <%=image_tag @user.thumbnail ,class:"circular_img"%>
-                <strong><%=@user.username %></strong><br />
-                 <%=@user.full_name %>
+                    <%=image_tag @user.thumbnail ,class:"circular_img float-left m-r-10"%>
+                    <strong><%=@user.username %></strong><br />
+                    <%=@user.full_name %>
                 </p>
             </div>
             <div class="follow-suggestions">
-             <%=link_to "View All","#",class:"float-right"%>
-              <p class="text-muted " > Suggestions for You <p>
-              <%=render "users/follower_suggestions"%>
+                <%=link_to "View All","#",class:"float-right"%>
+                <p class="text-muted " > Suggestions for You <p>
+                <%=render "users/follower_suggestions"%>
             </div>
         </div>
     </div>

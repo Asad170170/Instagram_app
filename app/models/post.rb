@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   default_scope {order(created_at: :desc)}
   has_many_attached :images
   has_many :likes
+  has_many :comments
   before_create :set_active
   belongs_to :user
   validate :image_type

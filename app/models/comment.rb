@@ -1,7 +1,8 @@
 class Comment < ApplicationRecord
-  belongs_to :Post
-  belongs_to :User
-  validates_presence_of :user_id
+  belongs_to :post
+  belongs_to :user
+  validates_presence_of :comment
   validates_presence_of :post_id
+  validates_presence_of :user_id
 
 end
