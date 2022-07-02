@@ -6,7 +6,7 @@
     </div>
     <div class="col-sm-3 col-lg-8">
       <%= link_to user.username,set_profile_path(user)%>
-      <p><%=user.created_at < 1.days.ago ? "new to instagram" :"followed by x users"%></p>
+      <p><%=user.created_at < 1.days.ago ? "new to instagram" :"followed by #{user.total_followers} users"%></p>
     </div>
      <div class="col-sm-3 col-lg-2">
       <%=form_tag follow_user_path,method: :post,class:"float-right" do %>

@@ -14,6 +14,10 @@ class User < ApplicationRecord
     return self.image.variant(resize: "50x50!").processed
   end
 
+  def thumbnailcomment
+    return self.image.variant(resize: "30x30!").processed
+  end
+
   def full_name
     "#{firstname} #{lastname}"
   end

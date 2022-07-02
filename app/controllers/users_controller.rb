@@ -4,12 +4,13 @@ class UsersController < ApplicationController
 
   def index
     @user=current_user
-    @posts=Post.active
+
     @comment=Comment.new
 
     following_ids=Follower.where(follower_id: current_user.id).map(&:following_id)
     following_ids << current_user.id
     @follower_suggestions=User.where.not(id: following_ids)
+    @posts=Post.includes(:user).where(user_id: following_ids).active
 
   end
 
