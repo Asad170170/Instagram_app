@@ -12,11 +12,15 @@
                 <%# likes and comments icons %>
 
                 <div class="post-details">
-                    <div class="post-actions">
+                    <div class="post-actions row">
+                        <div class="col-1">
                         <i class="fa fa-heart like-<%= post.id%> fa-2x post-like" data-id="<%=post.id%>"  ></i>
+                        </div>
+                        <div class="comment_icon col-1">
                         <%=link_to post_path(post.id) do%>
                             <i class="fa fa-comment fa-2x  post-comment"></i>
                         <%end%>
+                        </div>
                     </div>
                     <p><strong id="post-<%=post.id%>-likes"><%=post.total_likes_count%> likes</strong></p>
                     <p><strong id="post-<%=post.id%>-comments"><%=post.total_comments_count%> comments</strong></p>

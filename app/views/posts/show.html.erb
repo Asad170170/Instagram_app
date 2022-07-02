@@ -22,10 +22,16 @@
                      <p>____________________________________________________________________________________________________p>
                      <%=render "posts/comments",post: @post%>
                     </div>
-                  <div class="post-actions">
-                    <i class="fa fa-heart like-<%= @post.id%> fa-2x post-like" data-id="<%=@post.id%>"  ></i>
-                    <i class="fa fa-comment fa-2x  post-comment"></i>
-                  </div>
+                  <div class="post-actions row">
+                        <div class="col-1">
+                        <i class="fa fa-heart like-<%=@post.id%> fa-2x post-like" data-id="<%=@post.id%>"  ></i>
+                        </div>
+                        <div class="comment_icon col-1">
+
+                            <i class="fa fa-comment fa-2x  post-comment" id="post-comment-icon"></i>
+
+                        </div>
+                    </div>
                   <div class="row">
                   <div class="col-2">
                   <p><strong id="post-<%=@post.id%>-likes"><%=@post.total_likes_count%> likes</strong></p></div>
@@ -40,6 +46,7 @@
                     <%= form_for @comment do |f| %>
                         <%= f.hidden_field :post_id ,value: @post.id%>
                         <%= f.hidden_field :user_id ,value: current_user.id%>
+                         <%= f.hidden_field :return_to ,value:"post"%>
                     <div class="input-group mb-3">
                         <%=f.text_field :comment, placeholder:"Add comment here...." ,class:"form-control"%>
                         <div class="input-group-append">

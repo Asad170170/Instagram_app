@@ -5,14 +5,16 @@ class CommentsController <ApplicationController
 
     @comment=Comment.new(comment_params)
     if @comment.save!
-      redirect_to users_path ,flash: { success: "comment posted."}
+
+      return_url = params[:comment][:return_to].present? ? post_path(@comment.post_id) :users_path
+      redirect_to return_url ,flash: { success: "comment posted."}
     else
       redirect_to users_path,flash: { danger:"comment was not posted! "}
     end
   end
 
   def comment_params
-    params.require(:comment).permit(:comment ,:post_id,:user_id)
+    params.require(:comment).permit(:comment,:post_id,:user_id,:return_to)
   end
 
   # private
