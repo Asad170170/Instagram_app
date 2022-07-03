@@ -56,6 +56,10 @@
   <div class="form-group">
    <%=f.file_field :image,class: "form-control"%>
   </div>
+    <div class="field">
+      <%= f.check_box :is_public %>
+      <%= f.label :Account_is_public %>
+    </div>
 
   <div class="actions">
     <%= f.submit "Update" %>

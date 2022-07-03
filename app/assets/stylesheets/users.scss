@@ -5,6 +5,7 @@
 
 body{
   background: #fafafa !important;
+  font-family: "Neue Helvetica";
 }
 .user-summary{
   text-align: left;
@@ -16,6 +17,7 @@ body{
   padding :15px;
   border: 1px solid #ddd;
   border-radius: 4px;
+
 }
 .circular_img{
   border-radius: 50%;
@@ -23,11 +25,13 @@ body{
 .profile-stats{
   width: 320px;
   float: left;
+  font-family: "Neue Helvetica";
 }
 .btn-custom{
   background: transparent;
   border: 2px solid #ccc !important;
   border-radius: 6px !important;
+  font-family: "Neue Helvetica";
 }
 
 .btn-custom:hover{
@@ -37,5 +41,20 @@ body{
 .m-r-10{
   margin-right: 10px;
 }
+
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  background-color: rgb(229, 229, 229);
+  color: rgb(66, 65, 65);
+  text-transform: uppercase;
+  text-shadow: 2px 2px rgb(255, 255, 255);
+  font-family: "Neue Helvetica";
+}
+
+ 
 
 

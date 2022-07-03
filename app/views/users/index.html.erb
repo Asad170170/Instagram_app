@@ -4,70 +4,65 @@
         <div class="col-6">
             <%@posts.each do |post|%>
                 <div class="post-meta">
-                <%=image_tag post.user.thumbnail ,class:"circular_img"%>
-                <%= link_to  post.user.username,profile_path(post.user.username)%></div>
-                <% (0...post.images.count).each do |image|%>
-                <%= image_tag(post.thumbnail(image))%>
-                <%end%>
+                     <%=image_tag post.user.thumbnail ,class:"circular_img"%>
+                    <%= link_to  post.user.username,profile_path(post.user.username)%></div>
+                    <% (0...post.images.count).each do |image|%>
+                    <%= image_tag(post.thumbnail(image))%>
+                    <%end%>
                 <%# likes and comments icons %>
 
-                <div class="post-details">
-                    <div class="post-actions row">
-                        <div class="col-1">
-                        <i class="fa fa-heart like-<%= post.id%> fa-2x post-like" data-id="<%=post.id%>"  ></i>
+                    <div class="post-details">
+                        <div class="post-actions row">
+                            <div class="col-1">
+                                <i class="fa fa-heart like-<%= post.id%> fa-2x post-like" data-id="<%=post.id%>"  ></i>
+                            </div>
+                            <div class="comment_icon col-1">
+                                <%=link_to post_path(post.id) do%>
+                                 <i class="fa fa-comment fa-2x  post-comment"></i>
+                                 <%end%>
+                            </div>
                         </div>
-                        <div class="comment_icon col-1">
-                        <%=link_to post_path(post.id) do%>
-                            <i class="fa fa-comment fa-2x  post-comment"></i>
-                        <%end%>
+                        <div class="row">
+                            <div class="col-2">
+                                <p><strong id="post-<%=post.id%>-likes"><%=post.total_likes_count%> likes</strong></p></div>
+                                <div class="col-5 float-right">
+                                    <p><strong id="post-<%=post.id%>-comments"><%=post.total_comments_count%> comments</strong></p>  </div>
+                                </div>
+                                <p><%=post.caption%></p>
+                                <p class="text-muted"><%=time_ago_in_words post.created_at%> ago</p>
+                                <div class="comments_feed">
+                                <%=render "posts/comments",post: post%>
+                            </div>
+
                         </div>
-                    </div>
-                    <div class="row">
-                  <div class="col-2">
-                  <p><strong id="post-<%=post.id%>-likes"><%=post.total_likes_count%> likes</strong></p></div>
-                  <div class="col-5 float-right">
-                  <p><strong id="post-<%=post.id%>-comments"><%=post.total_comments_count%> comments</strong></p>  </div>
-                  </div>
-                    <p><%=post.caption%></p>
-                    <p class="text-muted"><%=time_ago_in_words post.created_at%> ago</p>
-                    <div class="comments_feed">
-                     <%=render "posts/comments",post: post%>
-                    </div>
 
-                </div>
-
-                <%# adding comments  %>
-                <div class="comment-box">
-                    <%= form_for @comment do |f| %>
-                        <%= f.hidden_field :post_id ,value: post.id%>
-                        <%= f.hidden_field :user_id ,value: @user.id%>
-                    <div class="input-group mb-3">
-                        <%=f.text_field :comment, placeholder:"Add comment here...." ,class:"form-control"%>
-                        <div class="input-group-append">
-                            <%= f.submit "post", class:"btn btn-success float-right"%>
+                        <%# adding comments  %>
+                        <div class="comment-box">
+                            <%= form_for @comment do |f| %>
+                            <%= f.hidden_field :post_id ,value: post.id%>
+                            <%= f.hidden_field :user_id ,value: @user.id%>
+                            <div class="input-group mb-3">
+                                <%=f.text_field :comment, placeholder:"Add comment here...." ,class:"form-control"%>
+                                <div class="input-group-append">
+                                    <%= f.submit "post", class:"btn btn-success float-right"%>
+                                </div>
+                            </div>
+                            <% end %>
                         </div>
-                    </div>
-                    <% end %>
-
-                </div>
-
             <%end%>
         </div>
 
         <div class="col-6">
-            <div class="user-summary">
-                <p>
-                    <%=image_tag @user.thumbnail ,class:"circular_img float-left m-r-10"%>
-                    <strong><%=@user.username %></strong><br />
-                    <%=@user.full_name %>
-                </p>
-            </div>
-            <div class="follow-suggestions">
-                <%=link_to "View All","#",class:"float-right"%>
-                <p class="text-muted " > Suggestions for You <p>
-                <%=render "users/follower_suggestions"%>
+           <p class="text-muted bold" > Stories <p>
+           <div class="stories_feed">
+             <%=render "users/stories_container",user: @user%>
+           </div >
+           
+           <div class="m-t-100">
+                <%=render "users/follower_suggestion_container",user: @user%>
             </div>
         </div>
     </div>
+
 </div>
 
