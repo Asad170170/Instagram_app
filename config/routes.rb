@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :users ,only: [:index]
   resources :posts,only: [:new, :create ,:show]
   resources :comments,only: [:destroy, :create ]
+  resource :stories
 
   root to: "public#homepage"
 

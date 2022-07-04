@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :likes
   has_many :comments
+  has_many :stories
   has_one_attached :image
   validate :image_type
 

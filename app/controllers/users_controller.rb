@@ -11,11 +11,13 @@ class UsersController < ApplicationController
     following_ids << current_user.id
     @follower_suggestions=User.where.not(id: following_ids)
     @posts=Post.includes(:user).where(user_id: following_ids).active
+    @stories=Story.includes(:user).where(user_id: following_ids)
 
   end
 
   def profile
     @posts=@user.posts.active
+    @stories=@user.stories
   end
 
   def follow_user
