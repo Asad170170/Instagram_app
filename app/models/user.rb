@@ -4,12 +4,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :posts
-  has_many :likes
-  has_many :comments
-  has_many :stories
-  has_one_attached :image
+  has_many :posts , dependent: :delete_all
+  has_many :likes , dependent: :delete_all
+  has_many :comments , dependent: :delete_all
+  has_many :stories , dependent: :delete_all
+  has_one_attached :image 
   validate :image_type
+  # has_many :followers
 
   def thumbnail
     return self.image.variant(resize: "50x50!").processed
