@@ -7,16 +7,38 @@ class PostsController <ApplicationController
   def show
     @comment=Comment.new
   end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
   def create
     @post=Post.new(post_params)
     @post.user_id=current_user.id if user_signed_in?
 
     if @post.save
-      
+
       redirect_to users_path ,flash: { success: "post created"}
     else
       redirect_to new_post_path,flash: { danger:"post not created"}
     end
+  end
+
+  def update
+    @post = Post.find(params[:id])
+
+    if @post.update(post_params)
+      redirect_to @post
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+
+    redirect_to profile_path(current_user.username)
   end
 
   def set_post

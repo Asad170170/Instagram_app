@@ -2,6 +2,9 @@
 
 Rails.application.routes.draw do
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
  # get "/dashboard" => "users#index"
   get "profile/:username" => "users#profile", as: :profile
   get "post/like/:post_id" => "likes#save_like",as: :like_post
@@ -11,7 +14,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   resources :users ,only: [:index]
-  resources :posts,only: [:new, :create ,:show]
+  resources :posts
   resources :comments,only: [:destroy, :create ]
   resource :stories
 

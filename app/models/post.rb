@@ -34,7 +34,6 @@ class Post < ApplicationRecord
       end
     end
     if images.length > 10
-      byebug
       errors.add(:images, "can't be more than 10!")
     end
   end

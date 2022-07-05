@@ -15,3 +15,5 @@
 //= require turbolinks
 //= require activestorage
 //= require_tree .
+//= require owl.carousel
+//= require bootstrap-sprockets

@@ -5,14 +5,14 @@ class  StoriesController <ApplicationController
     @story=Story.new
   end
   def show
-
+  
   end
   def create
     @story=Story.new(story_params)
     @story.user_id=current_user.id if user_signed_in?
 
     if @story.save
-
+      DeleteStoryJob.perform_at(1.minute.from_now, @story.id)
       redirect_to users_path ,flash: { success: "story created"}
     else
       redirect_to new_post_path,flash: { danger:"story not created"}
@@ -24,6 +24,7 @@ class  StoriesController <ApplicationController
   end
 
   def story_params
+
     params.require(:story).permit(:image)
   end
 

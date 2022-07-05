@@ -12,8 +12,19 @@
             <%=image_tag @post.user.thumbnail ,class:"circular_img"%>
             <%= link_to  @post.user.username,profile_path(@post.user.username)%>
             <%if @post.user_id == current_user.id%>
-            <i class="fa fa-edit fa-2x float-right "></i>
-            <i class="fa fa-trash fa-2x float-right m-r-10"></i>
+
+                 <%= link_to edit_post_path(@post) do %>
+                    <i class="fa fa-edit fa-2x float-right "></i>
+                <% end %>
+
+                <%= link_to 'Destroy', post_path(@post),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+
+                <%= link_to  edit_post_path(@post) do %>
+                    <i class="fa fa-trash fa-2x float-right m-r-10"></i>
+                <% end %>
+
             <%end%>
               <div class="post-details">
 
@@ -23,7 +34,7 @@
                      <%=render "posts/comments",post: @post%>
                     </div>
                   <div class="post-actions row">
-                       
+
                         <div class="col-1">
                         <i class="fa fa-heart like-<%=@post.id%> fa-2x post-like" data-id="<%=@post.id%>"  ></i>
                         </div>

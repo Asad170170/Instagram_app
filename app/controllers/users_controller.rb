@@ -32,4 +32,9 @@ class UsersController < ApplicationController
   def set_profile
     @user=User.find_by_username(params[:username])
   end
+
+  def story_params
+    params.require(:user).permit(:image,:username,:email)
+  end
+
 end
