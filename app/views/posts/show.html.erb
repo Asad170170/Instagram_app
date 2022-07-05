@@ -36,7 +36,11 @@
                   <div class="post-actions row">
 
                         <div class="col-1">
-                        <i class="fa fa-heart like-<%=@post.id%> fa-2x post-like" data-id="<%=@post.id%>"  ></i>
+                        <%if post_liked_by_user?(@post.id)%>
+                                <i class="fa fa-heart active like-<%= @post.id%> fa-2x post-like" data-id="<%=@post.id%>"  ></i>
+                                <%else%>
+                                 <i class="fa fa-heart like-<%= @post.id%> fa-2x post-like" data-id="<%=@post.id%>"  ></i>
+                                <%end%>
                         </div>
                         <div class="comment_icon col-1">
 
