@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Comment < ApplicationRecord
   belongs_to :post
   belongs_to :user
@@ -9,7 +11,8 @@ class Comment < ApplicationRecord
   attr_accessor :return_to
 
   private
+
   def update_post_comments_counter
-    Post.find(self.post_id).increment(:total_comments_count).save
+    Post.find(post_id).increment(:total_comments_count).save
   end
 end

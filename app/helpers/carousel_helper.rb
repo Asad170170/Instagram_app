@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CarouselHelper
   def carousel_for(images)
     Carousel.new(self, images).html
@@ -5,7 +7,8 @@ module CarouselHelper
 
   class Carousel
     def initialize(view, images)
-      @view, @images = view, images
+      @view = view
+      @images = images
       @uid = SecureRandom.hex(6)
     end
 
@@ -17,6 +20,7 @@ module CarouselHelper
     private
 
     attr_accessor :view, :images, :uid
+
     delegate :link_to, :content_tag, :image_tag, :safe_join, to: :view
 
     def indicators
@@ -43,7 +47,7 @@ module CarouselHelper
 
     def slide_tag(image, is_active)
       options = {
-        class: (is_active ? 'item active' : 'item'),
+        class: (is_active ? 'item active' : 'item')
       }
 
       content_tag(:div, image_tag(image), options)

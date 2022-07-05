@@ -1,23 +1,21 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
 
- # get "/dashboard" => "users#index"
-  get "profile/:username" => "users#profile", as: :profile
-  get "post/like/:post_id" => "likes#save_like",as: :like_post
-  post "follow/user" => "users#follow_user", as: :follow_user
+  # get "/dashboard" => "users#index"
+  get 'profile/:username' => 'users#profile', as: :profile
+  get 'post/like/:post_id' => 'likes#save_like', as: :like_post
+  post 'follow/user' => 'users#follow_user', as: :follow_user
 
-  devise_for :users , controllers: {
+  devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
-  resources :users ,only: [:index]
+  resources :users, only: [:index]
   resources :posts
-  resources :comments,only: [:destroy, :create ]
+  resources :comments, only: %i[destroy create]
   resource :stories
 
-  root to: "public#homepage"
-
+  root to: 'public#homepage'
 end

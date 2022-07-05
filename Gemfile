@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # devise gem
-gem "devise"
+gem 'devise'
 
 gem 'sidekiq'
 
@@ -40,15 +40,15 @@ gem 'mini_magick', '~> 4.8'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-#bootstrap
-gem 'bootstrap','~>4.0.0'
+# bootstrap
+gem 'bootstrap', '~>4.0.0'
 gem 'jquery-rails'
 
 gem 'owlcarousel-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -67,7 +67,7 @@ group :development do
   gem 'rubocop-minitest' # or gem 'rubocop-rspec' depending on your test suite
   gem 'rubocop-performance'
   gem 'rubocop-rails'
-  #to send and open email for authentication
+  # to send and open email for authentication
   gem 'letter_opener'
 end
 
