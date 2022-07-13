@@ -20,21 +20,21 @@
          <div class= "profile-stats"> <%=@user.posts.count%> Posts </div>
         </div>
         <div class="col-4">
-          <div class= "profile-stats"> <%=@user.total_followers%>  Followers</div>
+          <div class= "profile-stats"> <%=@user.total_followers%>  following</div>
         </div>
         <div class="col-4">
-          <div class= "profile-stats"> <%=@user.total_following%>  following</div>
+          <div class= "profile-stats"> <%=@user.total_following%>  Followers</div>
       </div>
     </div>
 
-    <p ><%=@user.full_name%></p>
+    <br>
+
     <%= simple_format @user.description%>
     <p> <%= link_to @user.website if @user.website.present?%></p>
 
   </div>
 </div>
 
-<%byebug%>
 <% if @user.id == current_user.id || @user.is_public || is_following(@user)!=nil %>
 <div class="row">
     <%@posts.each do |post|%>

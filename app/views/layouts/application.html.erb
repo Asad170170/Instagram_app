@@ -21,6 +21,10 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
     <% if user_signed_in?%>
+      <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
       <%= render "layouts/user_nav"%>
     <% else%>
     <%= render "layouts/public_nav"%>

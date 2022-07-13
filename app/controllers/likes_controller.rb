@@ -11,7 +11,6 @@ class LikesController < ApplicationController
     respond_to do |format|
       format.js do
         if existing_like.any?
-          # like already exist
           existing_like.first.destroy
           @success = false
         elsif @like.save

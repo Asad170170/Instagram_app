@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.5'
 # devise gem
 gem 'devise'
 
+gem 'cloudinary'
+
 gem 'sidekiq'
 
 # Use ActiveStorage variant
@@ -43,6 +45,7 @@ gem 'mini_magick', '~> 4.8'
 # bootstrap
 gem 'bootstrap', '~>4.0.0'
 gem 'jquery-rails'
+gem 'pundit'
 
 gem 'owlcarousel-rails'
 # Reduces boot times through caching; required in config/boot.rb

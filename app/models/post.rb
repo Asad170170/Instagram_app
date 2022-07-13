@@ -20,9 +20,7 @@ class Post < ApplicationRecord
     images[index].variant(resize: '300x300!').processed
   end
 
-  # def total_likes
-  #   0
-  # end
+ 
 
   private
 

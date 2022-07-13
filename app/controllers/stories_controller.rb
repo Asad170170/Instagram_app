@@ -12,13 +12,22 @@ class StoriesController < ApplicationController
   def create
     @story = Story.new(story_params)
     @story.user_id = current_user.id if user_signed_in?
-
+    authorize @story
     if @story.save
       DeleteStoryJob.perform_at(1.minute.from_now, @story.id)
       redirect_to users_path, flash: { success: 'story created' }
     else
       redirect_to new_post_path, flash: { danger: 'story not created' }
     end
+  end
+
+  def destroy
+
+    @story = Story.find(params[:format])
+    authorize @story
+    @story.destroy
+    redirect_to controller: 'users', action: 'index', current_user: current_user
+    # redirect_to profile_path(current_user.username)
   end
 
   def set_story

@@ -4,9 +4,21 @@
         <div class="elevation">
            <%=image_tag @story.user.thumbnail ,class:"circular_img"%>
             <%= link_to  @story.user.username,profile_path(@story.user.username)%>
-            <%if @story.user_id == current_user.id%>
-            <i class="fa fa-trash fa-2x float-right m-t-10 "></i>
-            <%end%>
+             <% if policy(@story).destroy?%>
+                <%=link_to  stories_path(@story), method: :delete,
+                  data: { confirm: 'Are you sure?' } do%>
+                  <i class="fa fa-trash fa-2x float-right m-r-10"></i>
+                <%end%>
+              <%end%>
+
+
+
+
+
+
+
+
+
           </div>
             <div class="story-image">
              <%= image_tag @story.thumbnailLarge if @story.image.present? %>

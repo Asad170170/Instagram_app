@@ -3,24 +3,28 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, only: [:show]
+  #  after_action :verify_authorized,only: [:new,:edit,:destroy]
+  #  after_action :verify_policy_scoped,only: [:new,:edit,:destroy]
   def new
     @post = Post.new
+    #  authorize @post
   end
 
   def show
     @comment = Comment.new
+
   end
 
   def edit
     @post = Post.find(params[:id])
+    authorize @post
   end
 
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id if user_signed_in?
-
+    authorize @post
     if @post.save
-
       redirect_to users_path, flash: { success: 'post created' }
     else
       redirect_to new_post_path, flash: { danger: 'post not created' }
@@ -29,7 +33,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-
+    authorize @post
     if @post.update(post_params)
       redirect_to @post
     else
@@ -39,6 +43,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
+    authorize @post
     @post.destroy
 
     redirect_to profile_path(current_user.username)

@@ -35,7 +35,7 @@
                                 <p><%=post.caption%></p>
                                 <p class="text-muted"><%=time_ago_in_words post.created_at%> ago</p>
                                 <div class="comments_feed">
-                                <%=render "posts/comments",post: post%>
+                                <%=render "comments/commentIndex",post: post%>
                             </div>
 
                         </div>
