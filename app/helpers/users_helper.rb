@@ -16,6 +16,6 @@ module UsersHelper
   end
 
   def is_following(user)
-    Follower.find_by(follower_id: current_user.id,following_id: user.id)
+    Follower.find_by(follower_id: current_user.id, following_id: user.id)
   end
 end

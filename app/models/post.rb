@@ -20,8 +20,6 @@ class Post < ApplicationRecord
     images[index].variant(resize: '300x300!').processed
   end
 
- 
-
   private
 
   def image_type

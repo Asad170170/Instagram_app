@@ -6,11 +6,11 @@ class Story < ApplicationRecord
   validate :image_type
 
   def thumbnail
-    self.image.variant(resize: '70x70!').processed
+    image.variant(resize: '70x70!').processed
   end
 
   def thumbnailvs
-    self.image.variant(resize: '30x30!').processed
+    image.variant(resize: '30x30!').processed
   end
 
   def thumbnailLarge

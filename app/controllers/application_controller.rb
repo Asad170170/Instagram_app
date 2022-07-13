@@ -28,5 +28,4 @@ class ApplicationController < ActionController::Base
     flash[:alert] = 'Record not found.'
     redirect_to request.referer || root_path
   end
-
 end

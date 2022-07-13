@@ -7,8 +7,7 @@ class StoriesController < ApplicationController
     @story = Story.new
   end
 
-  def show;
-  end
+  def show; end
 
   def create
     @story = Story.new(story_params)
@@ -23,9 +22,8 @@ class StoriesController < ApplicationController
   end
 
   def destroy
-
     @story = Story.find(params[:format])
-    #authorize @story
+    # authorize @story
     @story.destroy
     redirect_to controller: 'users', action: 'index', current_user: current_user
     # redirect_to profile_path(current_user.username)
