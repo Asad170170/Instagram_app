@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 StoryPolicy = Struct.new(:user, :record) do
   def index?
     user.id == record.user_id

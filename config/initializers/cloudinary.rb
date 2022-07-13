@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Cloudinary.config do |config|
   config.cloud_name = 'dzp8ziraj'
   config.api_key = '694516452151796'
