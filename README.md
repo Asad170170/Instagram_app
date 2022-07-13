@@ -1,12 +1,23 @@
 # README
-* rails: 5.2
-* ruby: 2.7.2
-* User authentication has been completed
-* user can upload posts
-* user can see each other posts
-* user can view or update his profile
-* user can view others profile
-* user can follow each other
-* user can add stories
-* user can see each other stories
-* stories will be deleted after one day
+# Instagram Clone
+This is a Instagram clone App.
+## Prerequisits
+  * Git
+  * rails: 5.2
+  * ruby: 2.7.2
+  * PostgreSQL 14.4
+## Clone the Repository and move to project directory
+  * git clone https://github.com/Asad170170/Instagram_app.git
+  * cd Instagram_app
+## Install Dependencies
+  * bundle
+## Create and Migrate Database
+  * Run the following command to create and migrate the database
+  * rails db:create
+  * rails db:migrate
+## Start the rails server to make the app running
+  * Run the following command to start the server
+  * rails s
+  * Now your server is up and running
+  * Go to your browser and go to the following address
+  * http://localhost:3000/

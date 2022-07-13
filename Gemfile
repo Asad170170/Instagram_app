@@ -36,6 +36,8 @@ gem 'cloudinary'
 
 gem 'sidekiq'
 
+gem 'ransack', '~> 2.5'
+
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'
 

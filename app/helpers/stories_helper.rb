@@ -3,7 +3,7 @@
 module StoriesHelper
   def story_picture(story)
     img_path = story.image.present? ? story.thumbnail : 'heart.png'
-    image_tag(img_path, width: 90)
+    image_tag(img_path, width: 70)
   end
 
   def story_profile_picture(user)
