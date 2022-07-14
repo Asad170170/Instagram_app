@@ -1,6 +1,5 @@
 <% post.comments.each do |comment|%>
   <div>
-
   <%if comment.user_id == current_user.id || comment.post.user_id == current_user.id %>
      <%=link_to  comment_path(comment), method: :delete,
               data: { confirm: 'Are you sure?' } do%>

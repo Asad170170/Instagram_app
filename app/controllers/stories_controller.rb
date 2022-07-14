@@ -14,7 +14,7 @@ class StoriesController < ApplicationController
     @story.user_id = current_user.id if user_signed_in?
     authorize @story
     if @story.save
-      DeleteStoryJob.perform_at(1.minute.from_now, @story.id)
+      DeleteStoryJob.perform_at(30.seconds.from_now, @story.id)
       redirect_to users_path, flash: { success: 'story created' }
     else
       redirect_to new_post_path, flash: { danger: 'story not created' }
