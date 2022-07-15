@@ -1,4 +1,4 @@
-$(function(){``
+$(function(){
   //jquery loaded
  $("#post-comment-icon").on("click",function(){
   $("#comment_comment").focus();
