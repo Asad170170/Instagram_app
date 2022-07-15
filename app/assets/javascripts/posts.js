@@ -1,4 +1,4 @@
-$(function(){
+$(function(){``
   //jquery loaded
  $("#post-comment-icon").on("click",function(){
   $("#comment_comment").focus();
@@ -15,10 +15,12 @@ $(function(){
       console.log(response);
       })
   })
+
+  $("#searchBtn").on("click",function(){
+    console.log("button clicked");
+    $("#cccc").hide();
+  })
+
 });
 
-
-$(document).ready(function(){
-  $('.owl-carousel').owlCarousel();
-});
 

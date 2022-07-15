@@ -11,6 +11,9 @@ class User < ApplicationRecord
   has_many :stories, dependent: :delete_all
   has_one_attached :image
   validate :image_type
+  validates :username , presence: true ,length: { maximum: 20 }
+  validates :firstname , presence: true ,length: { maximum: 10 }
+  validates :lastname , presence: true ,length: { maximum: 10 }
   # has_many :followers
 
   def thumbnail

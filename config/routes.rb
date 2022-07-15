@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   get 'post/like/:post_id' => 'likes#save_like', as: :like_post
   post 'follow/user' => 'users#follow_user', as: :follow_user
   root to: 'public#homepage'
+
+  get 'search', to: 'search#index'
 end

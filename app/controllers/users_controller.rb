@@ -14,11 +14,25 @@ class UsersController < ApplicationController
     @follower_suggestions = User.where.not(id: following_ids)
     @posts = Post.includes(:user).where(user_id: following_ids).active
     @stories = Story.includes(:user).where(user_id: following_ids)
+    # @seached=params[:q][:username_i_cont_any]
+    @items = []
+    if params[:commit] && params[:q][:username_i_cont_any]!=""
+      @query = User.ransack(params[:q])
+      @items = @query.result(distinct: true)
+    end
+
   end
 
   def profile
     @posts = @user.posts.active
     @stories = @user.stories
+
+    @items = []
+    if params[:commit] && params[:q][:username_i_cont_any]!=""
+      @query = User.ransack(params[:q])
+      @items = @query.result(distinct: true)
+    end
+
   end
 
   def follow_user

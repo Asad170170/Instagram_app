@@ -5,15 +5,15 @@
 
  <div class="form-group">
     <%= f.label :username %><br />
-    <%= f.text_field :username,class: "form-control", autofocus: true%>
+    <%= f.text_field :username,class: "form-control", autofocus: true, maxlength: "20"%>
   </div>
    <div class="form-group">
     <%= f.label :firstname %><br />
-    <%= f.text_field :firstname ,class: "form-control"%>
+    <%= f.text_field :firstname ,class: "form-control", maxlength: "10"%>
   </div>
    <div class="form-group">
-    <%= f.label :username %><br />
-    <%= f.text_field :lastname,class: "form-control" %>
+    <%= f.label :lastname %><br />
+    <%= f.text_field :lastname,class: "form-control", maxlength: "10">
   </div>
   <div class="form-group">
     <%= f.label :email %><br />

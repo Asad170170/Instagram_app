@@ -1,3 +1,12 @@
+<div class="item_errors_div" id="item-new-errors">
+        <div>
+          <% if post.errors.full_messages.any? %>
+          <% post.errors.full_messages.each do |error_message| %>
+          <%= error_message  %> <br />
+          <% end %>
+          <% end %>
+        </div>
+      </div>
 <%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
@@ -23,6 +32,17 @@
     <%= form.file_field :images, multiple: true ,class: "form-control"%>
    </div>
 <div>
+
+      <script>
+         $(function(){
+            $("input[type = 'submit']").click(function(){
+               var $fileUpload = $("input[type='file']");
+               if (parseInt($fileUpload.get(0).files.length) > 10){
+                  alert("You are only allowed to upload a maximum of 10 files");
+               }
+            });
+         });
+      </script>
 
 <div class="form-group">
   <div class="actions">

@@ -2,8 +2,8 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="users/sign_in">Log In</a>
+        <%= link_to "Log In", new_user_session_path,class:"nav-link"%>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="users/sign_up">Sign up</a>
+        <%= link_to "Sign up", new_user_registration_path,class:"nav-link"%>
       </li>

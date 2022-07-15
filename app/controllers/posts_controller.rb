@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to users_path, flash: { success: 'post created' }
     else
-      redirect_to new_post_path, flash: { danger: 'post not created' }
+      render new_post_path, flash: { danger: 'post not created' }
     end
   end
 

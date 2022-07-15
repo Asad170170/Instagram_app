@@ -17,7 +17,8 @@ class StoriesController < ApplicationController
       DeleteStoryJob.perform_at(30.seconds.from_now, @story.id)
       redirect_to users_path, flash: { success: 'story created' }
     else
-      redirect_to new_post_path, flash: { danger: 'story not created' }
+
+      render new_stories_path, flash: { danger: 'story not created' }
     end
   end
 
@@ -34,6 +35,9 @@ class StoriesController < ApplicationController
   end
 
   def story_params
-    params.require(:story).permit(:image)
+
+    if params[:story]!=nil
+      params.require(:story).permit(:image)
+    end
   end
 end
