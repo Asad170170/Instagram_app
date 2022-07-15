@@ -48,7 +48,7 @@ gem 'mini_magick', '~> 4.8'
 gem 'bootstrap', '~>4.0.0'
 gem 'jquery-rails'
 gem 'pundit'
-gem 'ransack', '~> 2.5'
+
 
 gem 'owlcarousel-rails'
 # Reduces boot times through caching; required in config/boot.rb
