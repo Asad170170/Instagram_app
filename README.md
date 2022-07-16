@@ -35,21 +35,21 @@ This is a Instagram clone App.
   * now you are good to go
 ### Deploying app on heroku using heroku cli
   * Install the Heroku CLI
-  * If you haven't already, log in to your Heroku account and follow the prompts to create a new SSH public key.
-      $ heroku login
-  * Clone the repository
-      $ heroku git:clone -a devising-instagram-clone-asad2
-      $ cd devising-instagram-clone-asad2
-  * Deploy your changes
-      $ git add .
-      $ git commit -am "make it better"
-      $ git push heroku master
+  * If you haven't already, log in to your Heroku account and follow the prompts to create a new SSH public key. \
+      $ heroku login \
+  * Clone the repository \
+      $ heroku git:clone -a devising-instagram-clone-asad2 \
+      $ cd devising-instagram-clone-asad2 \
+  * Deploy your changes \
+      $ git add . \
+      $ git commit -am "make it better" \
+      $ git push heroku master \
 ### After deploying as i am using background jobs run redis server on heroku for free.
  * go to resources and search for redis heroku and add this add-on
  * this add-on is completely free
  * Heroku will ask for you card varification add a valid card info and you are good to go
- * go to your project folder and create a file "Procfile" and past following code in it
-    web: bin/rails server -p ${PORT:-5000} -e $RAILS_ENV
-    worker: sidekiq
-    release: bin/rails db:migrate
+ * go to your project folder and create a file "Procfile" and past following code in it \
+    web: bin/rails server -p ${PORT:-5000} -e $RAILS_ENV \
+    worker: sidekiq \
+    release: bin/rails db:migrate \
 
