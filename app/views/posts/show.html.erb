@@ -56,7 +56,8 @@
 
                 <%# adding comments  %>
                 <div class="comment-box">
-                    <%= form_for @comment do |f| %>
+
+                    <%= form_for Comment.new do |f| %>
                         <%= f.hidden_field :post_id ,value: @post.id%>
                         <%= f.hidden_field :user_id ,value: current_user.id%>
                          <%= f.hidden_field :return_to ,value:"post"%>

@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 class LikesController < ApplicationController
+  
   before_action :authenticate_user!
+
 
   def save_like
     @like = Like.new(post_id: params[:post_id], user_id: current_user.id)
     @post_id = params[:post_id]
     existing_like = Like.where(post_id: @post_id, user_id: current_user.id)
-
     respond_to do |format|
       format.js do
         if existing_like.any?
@@ -23,4 +24,6 @@ class LikesController < ApplicationController
       end
     end
   end
+
+
 end

@@ -6,7 +6,6 @@ class Post < ApplicationRecord
   has_many_attached :images
   has_many :likes, dependent: :delete_all
   has_many :comments, dependent: :delete_all
-  before_create :set_active
   belongs_to :user
   validate :image_type
 
@@ -30,7 +29,5 @@ class Post < ApplicationRecord
     errors.add(:images, "can't be more than 10!") if images.length > 10
   end
 
-  def set_active
-    self.active = true
-  end
+
 end

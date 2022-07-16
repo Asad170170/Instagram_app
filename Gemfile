@@ -48,6 +48,7 @@ gem 'mini_magick', '~> 4.8'
 gem 'bootstrap', '~>4.0.0'
 gem 'jquery-rails'
 gem 'pundit'
+gem 'htmlbeautifier'
 
 
 gem 'owlcarousel-rails'
