@@ -15,10 +15,11 @@ class StoriesController < ApplicationController
     authorize @story
     if @story.save
       DeleteStoryJob.perform_at(30.seconds.from_now, @story.id)
-      redirect_to users_path, flash: { success: 'story created' }
+      flash[:notice] = "Story has been uploaded successfully.."
+      redirect_to users_path
     else
-
-      render new_stories_path, flash: { danger: 'story not created' }
+      flash[:notice] = "Story has not been uploaded!"
+      render new_stories_path
     end
   end
 

@@ -24,9 +24,11 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id if user_signed_in?
     authorize @post
     if @post.save
-      redirect_to users_path, flash: { success: 'post created' }
+      flash[:notice] = "Post has been uploaded successfully.."
+      redirect_to users_path
     else
-      render new_post_path, flash: { danger: 'post not created' }
+      flash[:notice] = "Post has not been uploaded!"
+      render new_post_path
     end
   end
 
