@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# story
 class Story < ApplicationRecord
   has_one_attached :image
   belongs_to :user
@@ -13,7 +14,7 @@ class Story < ApplicationRecord
     image.variant(resize: '30x30!').processed
   end
 
-  def thumbnailLarge
+  def thumbnail_large
     image.variant(resize: '500x500!').processed
   end
 

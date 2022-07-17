@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
+# LikesController
 class LikesController < ApplicationController
-  
   before_action :authenticate_user!
-
 
   def save_like
     @like = Like.new(post_id: params[:post_id], user_id: current_user.id)
@@ -24,6 +23,4 @@ class LikesController < ApplicationController
       end
     end
   end
-
-
 end

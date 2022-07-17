@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# post
 class Post < ApplicationRecord
   # belongs_to :user
   default_scope { order(created_at: :desc) }
@@ -15,7 +16,7 @@ class Post < ApplicationRecord
     images[index].variant(resize: '521x500!').processed
   end
 
-  def thumbnailSMALL(index)
+  def thumbnail_small(index)
     images[index].variant(resize: '300x300!').processed
   end
 
@@ -28,6 +29,4 @@ class Post < ApplicationRecord
     end
     errors.add(:images, "can't be more than 10!") if images.length > 10
   end
-
-
 end

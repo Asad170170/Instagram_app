@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
+# CommentsController
 class CommentsController < ApplicationController
-  
   before_action :authenticate_user!
-
 
   def create
     @comment = Comment.new(comment_params)
@@ -15,17 +14,13 @@ class CommentsController < ApplicationController
     end
   end
 
-
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
     redirect_to post_path(@comment.post)
   end
 
-
   def comment_params
     params.require(:comment).permit(:comment, :post_id, :user_id, :return_to)
   end
-
-
 end
