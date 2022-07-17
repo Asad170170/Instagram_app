@@ -7,9 +7,7 @@
                 <div class="post-meta">
                      <%=image_tag post.user.thumbnail ,class:"circular_img"%>
                     <%= link_to  post.user.username,profile_path(post.user.username)%></div>
-                    <% (0...post.images.count).each do |image|%>
-                    <%= image_tag(post.thumbnail(image))%>
-                    <%end%>
+                    <%= image_tag(post.thumbnail(0))%>
                 <%# likes and comments icons %>
 
                     <div class="post-details">

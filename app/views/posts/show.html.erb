@@ -2,9 +2,7 @@
 <div class="container">
     <div class="row ">
         <div class="col-6">
-                <% (0...@post.images.count).each do |image|%>
-                <%= image_tag @post.thumbnail(image) if @post.images.present? %>
-            <%end%>
+           <%=render "posts/carousel",post: @post%>
         </div>
 
         <div class="col-6">

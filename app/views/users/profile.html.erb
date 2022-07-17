@@ -38,18 +38,13 @@
 <% if @user.id == current_user.id || @user.is_public || following?(@user)!=nil %>
 <div class="row">
     <%@posts.each do |post|%>
-      <% (0...post.images.count).each do |image|%>
+      <%# <% (0...post.images.count).each do |image|%>
         <div class="col-4 insta_post">
-        <%= link_to image_tag(post.thumbnail_small(image)),post_path(post)%>
+        <%= link_to image_tag(post.thumbnail_small(0)),post_path(post)%>
         </div>
-      <%end%>
+
     <%end%>
 </div>
 <%else%>
  <p class="center"> Follow to view posts</p>
 <%end%>
-
-
-
-
-
