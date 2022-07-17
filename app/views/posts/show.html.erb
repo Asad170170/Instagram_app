@@ -28,7 +28,8 @@
                     <div class="comments_feed">
                     <p><%=@post.caption%></p>
                      <p>____________________________________________________________________________________________________p>
-                     <%=render "comments/comment",post: @post%>
+                     <%# <%=render "comments/comment",post: @post%>
+                     <%=render partial: "comments/comment",:locals => { :page => 1 }, collection: @post.comments, as: :comment%>
                     </div>
                   <div class="post-actions row">
 

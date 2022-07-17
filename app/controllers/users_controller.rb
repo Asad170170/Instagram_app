@@ -25,14 +25,13 @@ class UsersController < ApplicationController
   def requests
     req = Follower.where(following_id: current_user.id, accepted: [false]).map(&:follower_id)
     @users = User.where(id: req)
-
   end
 
   def requests_accept
     flash[:notice] = 'Request Accepted'
     @req = Follower.find_by(follower_id: params[:follower_id], following_id: current_user.id)
     @req.update(accepted: true)
-    redirect_to  requests_index_path(current_user.username)
+    redirect_to requests_index_path(current_user.username)
   end
 
   def requests_decline
@@ -46,12 +45,11 @@ class UsersController < ApplicationController
     if User.find(@following_id).is_public?
       Follower.create(follower_id: current_user.id, following_id: @following_id, accepted: true)
       flash[:notice] = "You are now following #{User.find(@following_id).username}"
-      redirect_to users_path
     else
       Follower.create(follower_id: current_user.id, following_id: @following_id, accepted: false)
       flash[:notice] = "Request sent to #{User.find(@following_id).username}"
-      redirect_to users_path
     end
+    redirect_to users_path
   end
 
   def set_profile

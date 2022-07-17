@@ -1,6 +1,5 @@
-<% post.comments.each do |comment|%>
   <div>
-  <%if comment.user_id == current_user.id || comment.post.user_id == current_user.id %>
+  <%if comment.user_id == current_user.id || comment.post.user_id == current_user.id and page==1%>
      <%=link_to  comment_path(comment), method: :delete,
               data: { confirm: 'Are you sure?' } do%>
       <i class="fa fa-trash fa-2x float-right m-r-10"></i>
@@ -11,4 +10,4 @@
     <%=comment.comment%>
     <p class="text-muted m-l-40"><%= time_ago_in_words comment.created_at%> ago</p>
   </div>
-<%end%>
+
