@@ -29,12 +29,12 @@ class User < ApplicationRecord
     "#{firstname} #{lastname}"
   end
 
-  def total_followers
-    Follower.where(follower_id: id).count
+  def total_following
+    Follower.where(follower_id: id, accepted: true).count
   end
 
-  def total_following
-    Follower.where(following_id: id).count
+  def total_followers
+    Follower.where(following_id: id, accepted: true).count
   end
 
   private

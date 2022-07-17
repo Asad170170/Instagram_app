@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   before_action :set_profile, only: [:profile]
 
   def index
-    following_ids = Follower.where(follower_id: current_user.id).map(&:following_id)
+    following_ids = Follower.where(follower_id: current_user.id, accepted: [nil, true]).map(&:following_id)
     following_ids << current_user.id
     @follower_suggestions = User.where.not(id: following_ids)
     @posts = Post.includes(:user).where(user_id: following_ids).active
@@ -22,12 +22,35 @@ class UsersController < ApplicationController
     searchable(params)
   end
 
+  def requests
+    req = Follower.where(following_id: current_user.id, accepted: [false]).map(&:follower_id)
+    @users = User.where(id: req)
+
+  end
+
+  def requests_accept
+    flash[:notice] = 'Request Accepted'
+    @req = Follower.find_by(follower_id: params[:follower_id], following_id: current_user.id)
+    @req.update(accepted: true)
+    redirect_to  requests_index_path(current_user.username)
+  end
+
+  def requests_decline
+    Follower.find_by(follower_id: params[:follower_id], following_id: current_user.id).destroy
+    flash[:notice] = 'Request Declined'
+    redirect_to requests_index_path(current_user.username)
+  end
+
   def follow_user
-    @follower_id = params[:follow_id]
-    if Follower.create(follower_id: current_user.id, following_id: @follower_id)
-      redirect_to users_path, flash: { success: 'you are now following' }
+    @following_id = params[:follow_id]
+    if User.find(@following_id).is_public?
+      Follower.create(follower_id: current_user.id, following_id: @following_id, accepted: true)
+      flash[:notice] = "You are now following #{User.find(@following_id).username}"
+      redirect_to users_path
     else
-      redirect_to users_path, flash: { danger: 'unable to follow' }
+      Follower.create(follower_id: current_user.id, following_id: @following_id, accepted: false)
+      flash[:notice] = "Request sent to #{User.find(@following_id).username}"
+      redirect_to users_path
     end
   end
 
@@ -36,6 +59,6 @@ class UsersController < ApplicationController
   end
 
   def story_params
-    params.require(:user).permit(:image, :username, :email)
+    params.require(:user).permit(:image, :username, :email, :follower_id)
   end
 end
