@@ -8,7 +8,7 @@ module UsersHelper
   end
 
   def initialize_profile_path(user)
-    username = user.username.present? ? user.username : 'xyz'
+    username = user.username.presence || 'xyz'
     profile_path(username)
   end
 

@@ -19,7 +19,7 @@ class LikesController < ApplicationController
           @success = false
         end
         @post_likes = Post.find(@post_id).total_likes_count
-        puts @post_likes
+        Rails.logger.debug @post_likes
       end
     end
   end

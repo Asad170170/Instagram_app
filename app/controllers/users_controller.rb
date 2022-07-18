@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   end
 
   def set_profile
-    @user = User.find_by_username(params[:username])
+    @user = User.find_by(username: params[:username])
   end
 
   def story_params
