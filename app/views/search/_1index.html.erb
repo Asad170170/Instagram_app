@@ -18,10 +18,13 @@
           <p><%=user.created_at > 1.days.ago ? "new to instagram" :"followed by #{user.total_followers} users"%></p>
         </div>
      <div class="col-sm-3 col-lg-2">
+
+       <%if user.id!=current_user.id and !following?(user)%>
         <%=form_tag follow_user_path,method: :post,class:"float-right" do %>
         <%=hidden_field_tag :follow_id ,user.id%>
         <%=submit_tag "Follow", class: "btn btn-info btn-sm"%>
         <%end%>
+      <%end%>
      </div>
     </div>
 
