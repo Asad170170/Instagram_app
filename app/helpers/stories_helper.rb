@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# StoriesHelper
 module StoriesHelper
   def story_picture(story)
     img_path = story.image.present? ? story.thumbnail : 'heart.png'
@@ -11,7 +12,7 @@ module StoriesHelper
     image_tag(img_path, width: 30, height: 30, class: 'circular_img')
   end
 
-  def set_story_path(story)
+  def initialize_story_path(story)
     stories_path(id: story.id)
   end
 end

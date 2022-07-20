@@ -3,12 +3,11 @@
     <div class="row ">
         <div class="col-6">
             <%@posts.each do |post|%>
+
                 <div class="post-meta">
                      <%=image_tag post.user.thumbnail ,class:"circular_img"%>
                     <%= link_to  post.user.username,profile_path(post.user.username)%></div>
-                    <% (0...post.images.count).each do |image|%>
-                    <%= image_tag(post.thumbnail(image))%>
-                    <%end%>
+                    <%= image_tag(post.thumbnail(0))%>
                 <%# likes and comments icons %>
 
                     <div class="post-details">
@@ -35,16 +34,17 @@
                                 <p><%=post.caption%></p>
                                 <p class="text-muted"><%=time_ago_in_words post.created_at%> ago</p>
                                 <div class="comments_feed">
-                                <%=render "comments/commentIndex",post: post%>
+                                <%# <%=render "comments/commentIndex",post: post%>
+                                <%=render partial: "comments/comment",:locals => { :page => 2 }, collection: post.comments, as: :comment%>
                             </div>
 
                         </div>
 
                         <%# adding comments  %>
                         <div class="comment-box">
-                            <%= form_for @comment do |f| %>
+                            <%= form_for  Comment.new do |f| %>
                             <%= f.hidden_field :post_id ,value: post.id%>
-                            <%= f.hidden_field :user_id ,value: @user.id%>
+                            <%= f.hidden_field :user_id ,value: current_user.id%>
                             <div class="input-group mb-3">
                                 <%=f.text_field :comment, placeholder:"Add comment here...." ,class:"form-control"%>
                                 <div class="input-group-append">
@@ -63,7 +63,7 @@
            </div >
 
            <div class="m-t-100">
-                <%=render "users/follower_suggestion_container",user: @user%>
+                <%=render "users/follower_suggestion_container",user: current_user%>
             </div>
         </div>
     </div>

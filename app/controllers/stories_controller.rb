@@ -1,13 +1,9 @@
 # frozen_string_literal: true
 
+# StoriesController
 class StoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_story, only: [:show]
-  def new
-    @story = Story.new
-  end
-
-  def show; end
+  before_action :set_story, only: %i[show destroy]
 
   def create
     @story = Story.new(story_params)
@@ -15,18 +11,22 @@ class StoriesController < ApplicationController
     authorize @story
     if @story.save
       DeleteStoryJob.perform_at(30.seconds.from_now, @story.id)
-      redirect_to users_path, flash: { success: 'story created' }
+      flash[:notice] = 'Story has been uploaded successfully..'
+      redirect_to users_path
     else
-      redirect_to new_post_path, flash: { danger: 'story not created' }
+      flash[:alert] = 'Story has not been uploaded!'
+      render new_stories_path
     end
   end
 
   def destroy
-    @story = Story.find(params[:format])
-    # authorize @story
-    @story.destroy
+    authorize @story
+    if @story.destroy
+      flash[:notice] = 'Story has been deleted successfully..'
+    else
+      flash[:alert] = 'Story  has not been deleted!'
+    end
     redirect_to controller: 'users', action: 'index', current_user: current_user
-    # redirect_to profile_path(current_user.username)
   end
 
   def set_story
@@ -34,6 +34,6 @@ class StoriesController < ApplicationController
   end
 
   def story_params
-    params.require(:story).permit(:image)
+    params.require(:story).permit(:image) unless params[:story].nil?
   end
 end

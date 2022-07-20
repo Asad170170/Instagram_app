@@ -46,6 +46,7 @@ gem 'mini_magick', '~> 4.8'
 
 # bootstrap
 gem 'bootstrap', '~>4.0.0'
+gem 'htmlbeautifier'
 gem 'jquery-rails'
 gem 'pundit'
 

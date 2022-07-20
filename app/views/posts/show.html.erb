@@ -2,9 +2,7 @@
 <div class="container">
     <div class="row ">
         <div class="col-6">
-                <% (0...@post.images.count).each do |image|%>
-                <%= image_tag @post.thumbnail(image) if @post.images.present? %>
-            <%end%>
+           <%=render "posts/carousel",post: @post%>
         </div>
 
         <div class="col-6">
@@ -28,7 +26,8 @@
                     <div class="comments_feed">
                     <p><%=@post.caption%></p>
                      <p>____________________________________________________________________________________________________p>
-                     <%=render "comments/comment",post: @post%>
+                     <%# <%=render "comments/comment",post: @post%>
+                     <%=render partial: "comments/comment",:locals => { :page => 1 }, collection: @post.comments, as: :comment%>
                     </div>
                   <div class="post-actions row">
 
@@ -56,7 +55,8 @@
 
                 <%# adding comments  %>
                 <div class="comment-box">
-                    <%= form_for @comment do |f| %>
+
+                    <%= form_for Comment.new do |f| %>
                         <%= f.hidden_field :post_id ,value: @post.id%>
                         <%= f.hidden_field :user_id ,value: current_user.id%>
                          <%= f.hidden_field :return_to ,value:"post"%>

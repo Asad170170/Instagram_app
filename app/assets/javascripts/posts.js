@@ -15,10 +15,12 @@ $(function(){
       console.log(response);
       })
   })
+
+  $("#searchBtn").on("click",function(){
+    console.log("button clicked");
+    $("#cccc").hide();
+  })
+
 });
 
-
-$(document).ready(function(){
-  $('.owl-carousel').owlCarousel();
-});
 
