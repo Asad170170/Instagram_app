@@ -1,0 +1,62 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body{
+  background: #fafafa !important;
+  font-family: "Neue Helvetica";
+}
+.user-summary{
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.follow-suggestions{
+  background-color: #ffff;
+  padding :15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+
+}
+.circular_img{
+  border-radius: 50%;
+}
+.profile-stats{
+  width: 320px;
+  float: left;
+  font-family: "Neue Helvetica";
+}
+.btn-custom{
+  background: transparent;
+  border: 2px solid #ccc !important;
+  border-radius: 6px !important;
+  font-family: "Neue Helvetica";
+}
+
+.btn-custom:hover{
+  background-color: #999 !important;
+}
+
+.m-r-10{
+  margin-right: 10px;
+}
+
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  background-color: rgb(229, 229, 229);
+  color: rgb(66, 65, 65);
+  text-transform: uppercase;
+  text-shadow: 2px 2px rgb(255, 255, 255);
+  font-family: "Neue Helvetica";
+}
+
+
+
+
+
+

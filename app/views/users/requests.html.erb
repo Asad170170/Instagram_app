@@ -1,0 +1,27 @@
+
+<div class="container bootstrap snippets bootdey">
+
+  <div class="header">
+    <h3 class="text-muted prj-name">
+        <span class="fa fa-users fa-2x principal-title"></span>
+        Follow Requests
+    </h3>
+  </div>
+
+
+  <div class="jumbotron list-content">
+    <ul class="list-group">
+      <li href="#" class="list-group-item title">
+      <%# <%=@users.length <= 0 ? "new to instagram" :"followed by #{user.total_followers} users"%>
+        You have <%=@users.length%> follow requests
+      </li>
+      <%=render partial: "my_requests", collection: @users, as: :user%>
+    </ul>
+  </div>
+  </div>
+</div>
+
+
+
+
+

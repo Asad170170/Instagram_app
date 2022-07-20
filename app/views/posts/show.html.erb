@@ -1,0 +1,76 @@
+
+<div class="container">
+    <div class="row ">
+        <div class="col-6">
+           <%=render "posts/carousel",post: @post%>
+        </div>
+
+        <div class="col-6">
+          <div class="post-meta">
+            <%=image_tag @post.user.thumbnail ,class:"circular_img"%>
+            <%= link_to  @post.user.username,profile_path(@post.user.username)%>
+            <%# changes to made %>
+            <%# <%if @post.user_id == current_user.id%>
+            <% if policy(@post).edit?%>
+                 <%= link_to edit_post_path(@post) do %>
+                    <i class="fa fa-edit fa-2x float-right "></i>
+                 <% end %>
+                <%=link_to  post_path(@post), method: :delete,
+                    data: { confirm: 'Are you sure?' } do%>
+                    <i class="fa fa-trash fa-2x float-right m-r-10"></i>
+                <%end%>
+
+            <%end%>
+              <div class="post-details">
+
+                    <div class="comments_feed">
+                    <p><%=@post.caption%></p>
+                     <p>____________________________________________________________________________________________________p>
+                     <%# <%=render "comments/comment",post: @post%>
+                     <%=render partial: "comments/comment",:locals => { :page => 1 }, collection: @post.comments, as: :comment%>
+                    </div>
+                  <div class="post-actions row">
+
+                        <div class="col-1">
+                        <%if post_liked_by_user?(@post.id)%>
+                                <i class="fa fa-heart active like-<%= @post.id%> fa-2x post-like" data-id="<%=@post.id%>"  ></i>
+                                <%else%>
+                                 <i class="fa fa-heart like-<%= @post.id%> fa-2x post-like" data-id="<%=@post.id%>"  ></i>
+                                <%end%>
+                        </div>
+                        <div class="comment_icon col-1">
+
+                            <i class="fa fa-comment fa-2x  post-comment" id="post-comment-icon"></i>
+
+                        </div>
+                    </div>
+                  <div class="row">
+                  <div class="col-2">
+                  <p><strong id="post-<%=@post.id%>-likes"><%=@post.total_likes_count%> likes</strong></p></div>
+                  <div class="col-5 float-right">
+                  <p><strong id="post-<%=@post.id%>-comments"><%=@post.total_comments_count%> comments</strong></p>  </div>
+                  </div>
+                  <p class="text-muted"><%=time_ago_in_words @post.created_at%> ago</p>
+                </div>
+
+                <%# adding comments  %>
+                <div class="comment-box">
+
+                    <%= form_for Comment.new do |f| %>
+                        <%= f.hidden_field :post_id ,value: @post.id%>
+                        <%= f.hidden_field :user_id ,value: current_user.id%>
+                         <%= f.hidden_field :return_to ,value:"post"%>
+                    <div class="input-group mb-3">
+                        <%=f.text_field :comment, placeholder:"Add comment here...." ,class:"form-control"%>
+                        <div class="input-group-append">
+                            <%= f.submit "post", class:"btn btn-success float-right"%>
+                        </div>
+                    </div>
+                    <% end %>
+
+                </div>
+          </div>
+        </div>
+    </div>
+</div>
+

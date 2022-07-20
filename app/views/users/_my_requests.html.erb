@@ -1,0 +1,17 @@
+<li href="#" class="list-group-item text-left">
+   <%= link_to profile_picture(user),initialize_profile_path(user)%>
+  <label class="name">
+   <%=user.username%>
+  </label>
+  <label class="pull-right">
+    <%=form_tag requests_accept_path(user.id),method: :get,class:"float-right" do %>
+        <%=hidden_field_tag :follow_id ,user.id%>
+        <%=submit_tag "Accept", class: "btn btn-success btn-xs glyphicon glyphicon-ok"%>
+        <%end%>
+     <%=form_tag requests_decline_path(user.id),method: :get,class:"float-right m-r-10" do %>
+        <%=hidden_field_tag :follow_id ,user.id%>
+        <%=submit_tag "Decline", class: "btn btn-danger  btn-xs glyphicon glyphicon-trash"%>
+        <%end%>
+  </label>
+  <div class="break"></div>
+</li>

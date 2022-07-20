@@ -1,0 +1,52 @@
+
+.story-show-container{
+  border: 2px solid #bbb;
+  padding: 10px;
+}
+
+.story-image{
+  margin-top: 20px;
+
+}
+.elevation{
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+padding: 10px;
+}
+
+.bb{
+  width: 250px;
+  height: 200px;
+  border: 1px solid rgb(198, 198, 198);
+  display: flex;
+  align-content: center;
+  padding: 10px;
+  align-items: center;
+}
+
+.stories-box{
+  width: 520px;
+  height: 200px;
+  padding: 15px;
+  background-color: white;
+  border: 1px solid #999;
+  margin-bottom: 30px;
+
+}
+.stories_feed{
+  height: 200px;
+  display: flex;
+  background-color: white;
+  overflow: scroll;
+  border-radius: 4px;
+}
+
+.story_profile_picture{
+  width: 30px;
+  height: 30px;
+}
+
+.flex{
+  display: flex;
+  flex-wrap: wrap;
+}
+

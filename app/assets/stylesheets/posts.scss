@@ -1,0 +1,83 @@
+.post-meta{
+  background:fff;
+  text-align: left;
+  font-weight: bold;
+  padding: 10px ;
+  width: 521px;
+  border: 1px solid #333;
+  img{
+    margin-right: 10px;
+  }
+}
+
+.box{
+  background-color: black;
+  width: 100px;
+  height: 100px;
+}
+.padding{
+  padding: 50px;
+}
+
+.insta_post{
+  padding: 10px;
+}
+.post-details{
+padding: 10px;
+background-color:white;
+padding-bottom: 10px;
+border: 1px solid rgb(199, 199, 199);
+
+}
+.post-actions{
+  margin-bottom: 20px;
+  i{
+    margin-right: 20px;
+    color: #ddd;
+    cursor: pointer;
+   }
+  i.active{
+    color:rgb(160, 29, 29)
+  }
+  i:hover{
+    color:rgb(160, 29, 29)
+  }
+}
+
+.comment_icon{
+  i:hover{
+    color:rgb(114, 114, 114)
+  }
+}
+.pading{
+  padding-bottom: 10px;
+}
+
+.comment-box{
+ padding: 15px;
+ background-color: white;
+ border: 1px solid #999;
+}
+
+.comments_feed{
+  height: 200px;
+  overflow: scroll;
+}
+
+
+
+.img {
+  box-shadow: 1px 1px 10px #999;
+  margin: 2px;
+  max-height: 50px;
+  cursor: pointer;
+  display:inline-block;
+  *display:inline;/* For IE7*/
+  *zoom:1;/* For IE7*/
+  vertical-align:top;
+}
+
+
+
+
+

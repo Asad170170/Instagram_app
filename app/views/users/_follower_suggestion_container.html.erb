@@ -1,0 +1,15 @@
+ <div class="user-summary">
+                <p>
+                    <%=image_tag user.thumbnail ,class:"circular_img float-left m-r-10"%>
+                    <strong><%=user.username %></strong><br />
+                    <%=user.full_name %>
+                </p>
+            </div>
+
+            <div class="follow-suggestions">
+                <%=link_to "View All","#",class:"float-right"%>
+                <p class="text-muted " > Suggestions for You <p>
+                <div class="suggestion_feed">
+                    <%=render "users/follower_suggestions"%>
+                </div>
+            </div>

@@ -1,0 +1,18 @@
+<% @follower_suggestions.each do |user|%>
+    <div class="recommended-follower">
+      <div class="row">
+        <div class="col-sm-3 col-lg-2">
+          <%= link_to profile_picture(user),initialize_profile_path(user)%>
+        </div>
+        <div class="col-sm-3 col-lg-8">
+          <%= link_to user.username,initialize_profile_path(user)%>
+          <p><%=user.created_at < 1.days.ago ? "new to instagram" :"followed by #{user.total_followers} users"%></p>
+        </div>
+     <div class="col-sm-3 col-lg-2">
+        <%=form_tag follow_user_path,method: :post,class:"float-right" do %>
+        <%=hidden_field_tag :follow_id ,user.id%>
+        <%=submit_tag "Follow", class: "btn btn-info btn-sm"%>
+        <%end%>
+     </div>
+    </div>
+<%end%>

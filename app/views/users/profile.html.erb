@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-4">
+      <%= image_tag @user.image,width:"200px",width:"200px",class:"circular_img"%>
+    </div>
+
+    <div class="col-8 text-left">
+      <div class="row">
+      <div class="col-6">
+      <h1> <%=@user.full_name%></h1>
+      </div>
+      <div class="col-6">
+        <%= link_to 'Edit Profile', edit_user_registration_path , class: "btn btn-muted btn-custom"  if can_edit_profile(@user.id) %>
+      </div>
+      </div>
+
+      <div class="row profile-stats">
+        <div class="col-4">
+         <div class= "profile-stats"> <%=@user.posts.count%> Posts </div>
+        </div>
+        <div class="col-4">
+          <div class= "profile-stats"> <%=@user.total_following%>  following</div>
+        </div>
+        <div class="col-4">
+          <div class= "profile-stats"> <%=@user.total_followers%>  Followers</div>
+      </div>
+    </div>
+
+    <br>
+
+    <%= simple_format @user.description%>
+    <p> <%= link_to @user.website if @user.website.present?%></p>
+
+  </div>
+</div>
+
+<% if @user.id == current_user.id || @user.is_public || following?(@user)!=nil %>
+<div class="row">
+    <%@posts.each do |post|%>
+      <%# <% (0...post.images.count).each do |image|%>
+        <div class="col-4 insta_post">
+        <%= link_to image_tag(post.thumbnail_small(0)),post_path(post)%>
+        </div>
+
+    <%end%>
+</div>
+<%else%>
+ <p class="center"> Follow to view posts</p>
+<%end%>
