@@ -4,16 +4,49 @@
 class UsersController < ApplicationController
   include Searchable
 
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :set_profile, only: [:profile]
 
   def index
-    following_ids = Follower.where(follower_id: current_user.id, accepted: [nil, true]).map(&:following_id)
-    following_ids << current_user.id
+    @profile_images = []
+    @stories_images=[]
+    @storyusers=[]
+    @storyUserImages=[]
+    following_ids = Follower.where(follower_id: params[:current_user], accepted: [nil, true]).map(&:following_id)
+    following_ids << params[:current_user]
     @follower_suggestions = User.where.not(id: following_ids)
+    @follower_suggestions.each do|c|
+      @profile_images<< ("https://res.cloudinary.com/dzp8ziraj/image/upload/"+c.image.key+".jpg")
+    end
+
     @posts = Post.includes(:user).where(user_id: following_ids).active
     @stories = Story.includes(:user).where(user_id: following_ids)
+
+    # { |string| string.upcase }
+    # @test = Story.all.map.to_json{|item|
+    #    item.merge(user: item.user)
+
+    # }
+    # @stories2 = User.find(Story.includes(:user).where(user_id: following_ids).puck(:user_id))
+
+    @stories.each do|c|
+      @storyusers<<User.find(c.user_id)
+    end
+    # @storyusers.each do|c|
+    #   @storyUserImages<< ("https://res.cloudinary.com/dzp8ziraj/image/upload/"+c.image.key+".jpg")
+    # end
+
+
+    @stories.each do|c|
+      @stories_images<< ("https://res.cloudinary.com/dzp8ziraj/image/upload/"+c.image.key+".jpg")
+    end
+
     searchable(params)
+    if(params[:format])
+      respond_to do |format|
+        format.json {render json: [@follower_suggestions ,@profile_images,@stories,@stories_images,@storyusers] }
+      end
+    end
   end
 
   def profile
@@ -33,6 +66,12 @@ class UsersController < ApplicationController
     @req.update(accepted: true)
     redirect_to requests_index_path(current_user.username)
   end
+
+  # def setProfilepics(){
+  #       @follower_suggestions.each do |user|
+  #         @profile_pics<< "https://res.cloudinary.com/dzp8ziraj/image/upload/v1659351306/#{user.image.key}.jpg"
+  #       end
+  # }
 
   def requests_decline
     Follower.find_by(follower_id: params[:follower_id], following_id: current_user.id).destroy

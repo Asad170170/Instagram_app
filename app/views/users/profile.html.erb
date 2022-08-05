@@ -41,6 +41,7 @@
       <%# <% (0...post.images.count).each do |image|%>
         <div class="col-4 insta_post">
         <%= link_to image_tag(post.thumbnail_small(0)),post_path(post)%>
+        <h1><%="https://res.cloudinary.com/dzp8ziraj/image/upload/v1659351306/#{post.images[0].key}.jpg"%></h1>
         </div>
 
     <%end%>

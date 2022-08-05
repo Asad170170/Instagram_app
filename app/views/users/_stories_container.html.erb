@@ -15,7 +15,7 @@
 
           </div>
           <div style="margin-top:20px">
-          <%= link_to story_picture(story),stories_path(story.id)%>
+          <%= link_to story_picture(story),story_path(story)%>
           </div>
           <p class="text-muted  text-s-10 " style="margin-top:20px"><%=time_ago_in_words story.created_at%> ago</p>
         </div>

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index]
   resources :posts
   resources :comments, only: %i[destroy create]
-  resource :stories
+  resources :stories
 
   get 'req_accept/:follower_id' => 'users#requests_accept', as: :requests_accept
   get 'req_decline/:follower_id' => 'users#requests_decline', as: :requests_decline
