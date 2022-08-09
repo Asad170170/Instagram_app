@@ -8,43 +8,21 @@ class UsersController < ApplicationController
   before_action :set_profile, only: [:profile]
 
   def index
-    @profile_images = []
-    @stories_images=[]
-    @storyusers=[]
-    @storyUserImages=[]
     following_ids = Follower.where(follower_id: params[:current_user], accepted: [nil, true]).map(&:following_id)
     following_ids << params[:current_user]
     @follower_suggestions = User.where.not(id: following_ids)
-    @follower_suggestions.each do|c|
-      @profile_images<< ("https://res.cloudinary.com/dzp8ziraj/image/upload/"+c.image.key+".jpg")
-    end
-
     @posts = Post.includes(:user).where(user_id: following_ids).active
     @stories = Story.includes(:user).where(user_id: following_ids)
-
-    # { |string| string.upcase }
-    # @test = Story.all.map.to_json{|item|
-    #    item.merge(user: item.user)
-
-    # }
-    # @stories2 = User.find(Story.includes(:user).where(user_id: following_ids).puck(:user_id))
-
-    @stories.each do|c|
-      @storyusers<<User.find(c.user_id)
-    end
-    # @storyusers.each do|c|
-    #   @storyUserImages<< ("https://res.cloudinary.com/dzp8ziraj/image/upload/"+c.image.key+".jpg")
-    # end
-
-
-    @stories.each do|c|
-      @stories_images<< ("https://res.cloudinary.com/dzp8ziraj/image/upload/"+c.image.key+".jpg")
-    end
-
     searchable(params)
     if(params[:format])
       respond_to do |format|
-        format.json {render json: [@follower_suggestions ,@profile_images,@stories,@stories_images,@storyusers] }
+         format.json { render json: {
+                               stories: ActiveModelSerializers::SerializableResource.new(@stories, each_serializer: StorySerializer),
+                               followers: ActiveModelSerializers::SerializableResource.new(@follower_suggestions, each_serializer: UserSerializer)
+                              }
+      }
+
+
       end
     end
   end

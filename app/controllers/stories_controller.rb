@@ -21,12 +21,9 @@ class StoriesController < ApplicationController
   end
 
   def show
-
-    @image=("https://res.cloudinary.com/dzp8ziraj/image/upload/"+@story.image.key+".jpg")
-    @user=@story.user
     if(params[:format])
       respond_to do |format|
-        format.json { render json: [@story,@image,@user] }
+        format.json { render json: @story }
       end
     end
 
