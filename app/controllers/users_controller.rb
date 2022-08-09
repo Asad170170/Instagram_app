@@ -4,16 +4,27 @@
 class UsersController < ApplicationController
   include Searchable
 
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :set_profile, only: [:profile]
 
   def index
-    following_ids = Follower.where(follower_id: current_user.id, accepted: [nil, true]).map(&:following_id)
-    following_ids << current_user.id
+    following_ids = Follower.where(follower_id: params[:current_user], accepted: [nil, true]).map(&:following_id)
+    following_ids << params[:current_user]
     @follower_suggestions = User.where.not(id: following_ids)
     @posts = Post.includes(:user).where(user_id: following_ids).active
     @stories = Story.includes(:user).where(user_id: following_ids)
     searchable(params)
+    if(params[:format])
+      respond_to do |format|
+         format.json { render json: {
+                               stories: ActiveModelSerializers::SerializableResource.new(@stories, each_serializer: StorySerializer),
+                               followers: ActiveModelSerializers::SerializableResource.new(@follower_suggestions, each_serializer: UserSerializer)
+                              }
+      }
+
+
+      end
+    end
   end
 
   def profile
@@ -33,6 +44,12 @@ class UsersController < ApplicationController
     @req.update(accepted: true)
     redirect_to requests_index_path(current_user.username)
   end
+
+  # def setProfilepics(){
+  #       @follower_suggestions.each do |user|
+  #         @profile_pics<< "https://res.cloudinary.com/dzp8ziraj/image/upload/v1659351306/#{user.image.key}.jpg"
+  #       end
+  # }
 
   def requests_decline
     Follower.find_by(follower_id: params[:follower_id], following_id: current_user.id).destroy

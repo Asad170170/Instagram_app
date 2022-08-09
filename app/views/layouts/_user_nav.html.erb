@@ -1,6 +1,8 @@
 
       <li class="nav-item active">
-      <%= link_to "Home", users_path,class:"nav-link"%>
+      <div class="nav-link navitemcolor">
+      <%= link_to "Home", controller: 'users', action: 'index', current_user: current_user %>
+      </div>
       </li>
       <li class="nav-item">
         <%= link_to "My Profile", profile_path(current_user.username),class:"nav-link"%>
@@ -12,9 +14,9 @@
        <%= link_to "New Post", new_post_path,class:"nav-link"%>
       </li>
          <li class="nav-item">
-       <%= link_to "New Story", new_stories_path,class:"nav-link"%>
+       <%= link_to "New Story", new_story_path,class:"nav-link"%>
       </li>
       <li class="nav-item">
       <%= link_to "Logout", destroy_user_session_path, method: :delete,class:"nav-link"%>
-  
+
       </li>
